@@ -14,5 +14,5 @@ The app is under construction
 
 ## Personal project Goals
 - Improve my understanding of the foundational elements of programming for Android
- - Learn more about important core concepts like Layouts, RecyclerView, ViewHolder with clickhandler and Intents
+  - Learn more about important core concepts like Layouts, RecyclerView, ViewHolder with clickhandler and Intents
 - Be one step closer to my goal to be a solid Android developer
