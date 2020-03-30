@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.io.IOException;
 import java.net.URL;
 
+import cc.sauerwein.popularmovies_stage1.utilities.JsonUtils;
 import cc.sauerwein.popularmovies_stage1.utilities.NetworkUtils;
 
 public class MainActivity extends AppCompatActivity {
@@ -51,15 +52,16 @@ public class MainActivity extends AppCompatActivity {
         new FetchMovieTask().execute();
     }
 
-    private class FetchMovieTask extends AsyncTask<String, Void, String> {
+    private class FetchMovieTask extends AsyncTask<String, Void, Movie[]> {
 
         @Override
-        protected String doInBackground(String... strings) {
+        protected Movie[] doInBackground(String... strings) {
             URL movieRequestUrl = NetworkUtils.buildUrl();
 
             try {
                 String jsonResponse = NetworkUtils.getResponseFromHttpUrl(movieRequestUrl);
-                return jsonResponse;
+                Movie[] movies = JsonUtils.jsonToMovie(jsonResponse);
+                return movies;
             } catch (IOException e) {
                 e.printStackTrace();
                 return null;
@@ -67,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(String s) {
+        protected void onPostExecute(Movie[] movies) {
 
         }
     }
