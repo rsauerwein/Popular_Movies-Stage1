@@ -1,6 +1,5 @@
 package cc.sauerwein.popularmovies_stage1;
 
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -32,25 +31,24 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(mMovieAdapter);
 
-        // Testdata //
-        Uri uri = Uri.parse("https://image.tmdb.org/t/p/w185//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg");
-
-        Movie fakeMovies[] = new Movie[2];
-        Movie fakemovie = new Movie(1, uri);
-        ;
-        Movie fakemovie1 = new Movie(2, uri);
-        ;
-        fakeMovies[0] = fakemovie;
-        fakeMovies[1] = fakemovie1;
-        mMovieAdapter.setMovieData(fakeMovies);
-        // endTestdata //
+//        // Testdata //
+//        Uri uri = Uri.parse("https://image.tmdb.org/t/p/w185//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg");
+//
+//        Movie fakeMovies[] = new Movie[2];
+//        Movie fakemovie = new Movie(1, uri);
+//        ;
+//        Movie fakemovie1 = new Movie(2, uri);
+//        ;
+//        fakeMovies[0] = fakemovie;
+//        fakeMovies[1] = fakemovie1;
+//        mMovieAdapter.setMovieData(fakeMovies);
+//        // endTestdata //
 
         loadMovieData();
     }
 
     private void loadMovieData() {
-        // TODO temp disabled
-        // new FetchMovieTask().execute();
+        new FetchMovieTask().execute();
     }
 
     private class FetchMovieTask extends AsyncTask<String, Void, String> {

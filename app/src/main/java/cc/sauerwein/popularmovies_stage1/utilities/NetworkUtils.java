@@ -13,15 +13,21 @@ import cc.sauerwein.popularmovies_stage1.preferences.ApiKey;
 
 public class NetworkUtils {
 
-    private static final String BASE_URL = "https://api.themoviedb.org/3/configuration";
+    private static final String API_BASE_URL = "https://api.themoviedb.org/3";
+    private static final String IMAGE_BASE_URL = "https://image.tmdb.org/t/p/";
+
+    private static final String POPULAR_MOVIES_PATH = "movie/popular";
 
     private static final String API_KEY_PARAM = "api_key";
 
     private static final String DEFAULT_IMAGE_SIZE = "w185";
 
 
+    // For now this function builds a URL which leads to a popular movies API request
+    // TODO Make buildUrl more flexible (f.e. it should also be able to create queries for top rated movies
     public static URL buildUrl() {
-        Uri builtUri = Uri.parse(BASE_URL).buildUpon()
+        Uri builtUri = Uri.parse(API_BASE_URL).buildUpon()
+                .appendEncodedPath(POPULAR_MOVIES_PATH)
                 .appendQueryParameter(API_KEY_PARAM, ApiKey.API_KEY)
                 .build();
 
