@@ -1,32 +1,34 @@
 package cc.sauerwein.popularmovies_stage1;
 
-import android.net.Uri;
+import com.google.gson.annotations.SerializedName;
 
 
 public class Movie {
     private int id;
-    private Uri poster;
-    private String poster_path;
-
-    public Movie() {
-
-    }
-
-    public Movie(int id, String poster_path) {
-        this.id = id;
-        this.poster_path = poster_path;
-    }
-
-    public Movie(int id, Uri poster) {
-        this.id = id;
-        this.poster = poster;
-    }
+    private String title;
+    private String overview;
+    @SerializedName("release_date")
+    private String releaseDate;
+    @SerializedName("poster_path")
+    private String posterPath;
 
     public int getId() {
         return id;
     }
 
-    public Uri getPoster() {
-        return poster;
+    public String getTitle() {
+        return title;
+    }
+
+    public String getOverview() {
+        return overview;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public String getPosterPath() {
+        return posterPath;
     }
 }
