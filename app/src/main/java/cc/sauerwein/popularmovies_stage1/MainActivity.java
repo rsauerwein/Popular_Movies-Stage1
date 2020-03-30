@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Movie[] movies) {
-
+            mMovieAdapter.setMovieData(movies);
         }
     }
 }

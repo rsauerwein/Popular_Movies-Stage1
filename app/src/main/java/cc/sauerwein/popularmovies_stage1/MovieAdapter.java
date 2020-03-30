@@ -1,5 +1,6 @@
 package cc.sauerwein.popularmovies_stage1;
 
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
+
+import cc.sauerwein.popularmovies_stage1.utilities.NetworkUtils;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapterViewHolder> {
 
@@ -25,7 +28,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
 
     @Override
     public void onBindViewHolder(@NonNull MovieAdapterViewHolder holder, int position) {
-        Picasso.get().load(mMovieData[position].getPoster()).into(holder.mMoviePosterImageView);
+        String posterPath = mMovieData[position].getPosterPath();
+        Uri posterUri = NetworkUtils.createPosterUri(posterPath);
+        Picasso.get().load(posterUri).into(holder.mMoviePosterImageView);
     }
 
     @Override

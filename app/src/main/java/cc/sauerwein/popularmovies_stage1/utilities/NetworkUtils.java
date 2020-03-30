@@ -67,4 +67,13 @@ public class NetworkUtils {
             urlConnection.disconnect();
         }
     }
+
+    public static Uri createPosterUri(String posterPath) {
+        Uri uri = Uri.parse(IMAGE_BASE_URL).buildUpon()
+                .appendPath(DEFAULT_IMAGE_SIZE)
+                .appendEncodedPath(posterPath)
+                .build();
+
+        return uri;
+    }
 }
