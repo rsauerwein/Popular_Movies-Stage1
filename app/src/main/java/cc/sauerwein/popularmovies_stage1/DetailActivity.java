@@ -15,6 +15,7 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        setTitle(getString(R.string.movie_detail));
 
         Intent intent = getIntent();
         String json = intent.getStringExtra(Intent.EXTRA_TEXT);

@@ -5,4 +5,5 @@
     <string name="error">Unable to load Movie data. Please check your network connection and try again by pressing the Switch To button.</string>
     <string name="popular">Popular</string>
     <string name="top_rated">Top Rated</string>
+    <string name="movie_detail">Movie Details</string>
 </resources>
