@@ -8,4 +8,5 @@
     <string name="movie_detail">Movie Details</string>
     <string name="mark_as_favorite">Mark as Favorite</string>
     <string name="movie_poster_description">Movie poster</string>
+    <string name="movie_rating">%1s/10</string>
 </resources>

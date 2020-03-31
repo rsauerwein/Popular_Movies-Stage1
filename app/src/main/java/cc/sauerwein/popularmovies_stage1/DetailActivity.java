@@ -49,7 +49,7 @@ public class DetailActivity extends AppCompatActivity {
     private void populateUI() {
         mMovieTitleTv.setText(mMovie.getTitle());
         mMovieDescriptionTv.setText(mMovie.getOverview());
-        mUserRating.setText(mMovie.getUserRating() + "/10");
+        mUserRating.setText(getString(R.string.movie_rating, mMovie.getUserRating()));
         mMovieThumbnail = findViewById(R.id.iv_movie_poster_thumbnail);
 
         Calendar calendar = Calendar.getInstance();
