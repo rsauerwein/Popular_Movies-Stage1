@@ -20,6 +20,7 @@ public class NetworkUtils {
     public static final String OPTION_TOP_RATED_MOVIES_MOVIES = "movie/top_rated";
 
     private static final String API_KEY_PARAM = "api_key";
+    private static final String API_KEY = ApiKey.API_KEY;
 
     private static final String DEFAULT_IMAGE_SIZE = "w185";
 
@@ -35,7 +36,7 @@ public class NetworkUtils {
     public static URL buildUrl(String apiPath) {
         Uri builtUri = Uri.parse(API_BASE_URL).buildUpon()
                 .appendEncodedPath(apiPath)
-                .appendQueryParameter(API_KEY_PARAM, ApiKey.API_KEY)
+                .appendQueryParameter(API_KEY_PARAM, API_KEY)
                 .build();
 
         URL url = null;
