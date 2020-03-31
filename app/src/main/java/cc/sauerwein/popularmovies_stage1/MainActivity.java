@@ -22,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private MovieAdapter mMovieAdapter;
 
+    private MenuItem mMostPopular;
+    private MenuItem mTopRated;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(mMovieAdapter);
 
+
 //        // Testdata //
 //        Uri uri = Uri.parse("https://image.tmdb.org/t/p/w185//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg");
 //
@@ -49,18 +53,49 @@ public class MainActivity extends AppCompatActivity {
 //        mMovieAdapter.setMovieData(fakeMovies);
 //        // endTestdata //
 
-        loadMovieData();
+        loadMovieData(NetworkUtils.OPTION_POPULAR_MOVIES);
     }
 
-    private void loadMovieData() {
-        new FetchMovieTask().execute();
+    private void loadMovieData(String option) {
+        new FetchMovieTask().execute(option);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        mMostPopular = menu.findItem(R.id.action_most_popular);
+        mTopRated = menu.findItem(R.id.action_top_rated);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_top_rated:
+                mMovieAdapter.setMovieData(null);
+                loadMovieData(NetworkUtils.OPTION_TOP_RATED_MOVIES_MOVIES);
+                mTopRated.setVisible(false);
+                mMostPopular.setVisible(true);
+                break;
+            case R.id.action_most_popular:
+                mMovieAdapter.setMovieData(null);
+                loadMovieData(NetworkUtils.OPTION_POPULAR_MOVIES);
+                mMostPopular.setVisible(false);
+                mTopRated.setVisible(true);
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+        return true;
     }
 
     private class FetchMovieTask extends AsyncTask<String, Void, Movie[]> {
 
         @Override
         protected Movie[] doInBackground(String... strings) {
-            URL movieRequestUrl = NetworkUtils.buildUrl(NetworkUtils.PATH_POPULAR_MOVIES);
+            URL movieRequestUrl = NetworkUtils.buildUrl(strings[0]);
 
             try {
                 String jsonResponse = NetworkUtils.getResponseFromHttpUrl(movieRequestUrl);
@@ -76,26 +111,5 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(Movie[] movies) {
             mMovieAdapter.setMovieData(movies);
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_top_rated:
-                break;
-            case R.id.action_most_popular:
-                break;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-
-        return true;
     }
 }
