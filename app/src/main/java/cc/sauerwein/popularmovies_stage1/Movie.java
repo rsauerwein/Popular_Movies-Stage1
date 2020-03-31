@@ -2,13 +2,15 @@ package cc.sauerwein.popularmovies_stage1;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Date;
+
 
 public class Movie {
     private int id;
     private String title;
     private String overview;
     @SerializedName("release_date")
-    private String releaseDate;
+    private Date releaseDate;
     @SerializedName("poster_path")
     private String posterPath;
     @SerializedName("vote_average")
@@ -26,7 +28,7 @@ public class Movie {
         return overview;
     }
 
-    public String getReleaseDate() {
+    public Date getReleaseDate() {
         return releaseDate;
     }
 

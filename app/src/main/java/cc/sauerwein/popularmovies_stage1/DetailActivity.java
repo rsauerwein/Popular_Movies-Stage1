@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
+import java.util.Calendar;
+
 import cc.sauerwein.popularmovies_stage1.utilities.NetworkUtils;
 
 public class DetailActivity extends AppCompatActivity {
@@ -45,8 +47,11 @@ public class DetailActivity extends AppCompatActivity {
         mMovieTitleTv.setText(mMovie.getTitle());
         mMovieDescriptionTv.setText(mMovie.getOverview());
         mUserRating.setText(mMovie.getUserRating() + "/10");
-        mReleaseDate.setText(mMovie.getReleaseDate());
         mMovieThumbnail = findViewById(R.id.iv_movie_poster_thumbnail);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(mMovie.getReleaseDate());
+        mReleaseDate.setText(Integer.toString(calendar.get(Calendar.YEAR)));
 
         String posterPath = mMovie.getPosterPath();
         Uri posterUri = NetworkUtils.createPosterUri(posterPath);
