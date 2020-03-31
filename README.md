@@ -19,3 +19,7 @@ Rename the ApiKey.java.sample (located in the preferences src dir) to ApiKey.jav
   - Picasso also helps a lot
 - In future I should maybe also work in early stages with branches. Some commits contained way too much different stuff (for example while implementing async API requests)
 - It's a good practice to lint the code
+
+## Used resources
+- https://stackoverflow.com/questions/1560788/how-to-check-internet-access-on-android-inetaddress-never-times-out
+- I adopted a lot from previous Udacity projects (Recyclerview, Async tasks, Networkutils)

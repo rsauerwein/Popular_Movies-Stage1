@@ -58,8 +58,7 @@ public class NetworkUtils {
      */
     public static String getResponseFromHttpUrl(URL url) throws IOException {
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-        urlConnection.setConnectTimeout(5000); // set the timeout to 5 seconds
-        urlConnection.setReadTimeout(5000); // Note: The DNS timeout isn't affected by that settings. So timeouts usually take longer
+
         try {
             InputStream in = urlConnection.getInputStream();
 

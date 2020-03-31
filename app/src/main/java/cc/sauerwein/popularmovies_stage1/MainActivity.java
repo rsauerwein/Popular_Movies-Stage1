@@ -20,6 +20,7 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.net.URL;
 
+import cc.sauerwein.popularmovies_stage1.utilities.InternetCheck;
 import cc.sauerwein.popularmovies_stage1.utilities.JsonUtils;
 import cc.sauerwein.popularmovies_stage1.utilities.NetworkUtils;
 
@@ -55,8 +56,20 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         loadMovieData(NetworkUtils.OPTION_POPULAR_MOVIES);
     }
 
-    private void loadMovieData(String option) {
-        new FetchMovieTask().execute(option);
+    private void loadMovieData(final String option) {
+        mLoadingIndicator.setVisibility(View.VISIBLE);
+        new InternetCheck(new InternetCheck.Consumer() {
+            @Override
+            public void accept(Boolean internet) {
+                if (internet) {
+                    new FetchMovieTask().execute(option);
+                } else {
+                    showErrorMessage();
+                    mLoadingIndicator.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
     }
 
     @Override
@@ -113,12 +126,6 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     }
 
     private class FetchMovieTask extends AsyncTask<String, Void, Movie[]> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            mLoadingIndicator.setVisibility(View.VISIBLE);
-        }
 
         @Override
         protected Movie[] doInBackground(String... strings) {
