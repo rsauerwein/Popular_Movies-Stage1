@@ -44,7 +44,7 @@ public class DetailActivity extends AppCompatActivity {
     private void populateUI() {
         mMovieTitleTv.setText(mMovie.getTitle());
         mMovieDescriptionTv.setText(mMovie.getOverview());
-        mUserRating.setText(mMovie.getUserRating());
+        mUserRating.setText(mMovie.getUserRating() + "/10");
         mReleaseDate.setText(mMovie.getReleaseDate());
         mMovieThumbnail = findViewById(R.id.iv_movie_poster_thumbnail);
 
