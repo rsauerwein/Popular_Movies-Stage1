@@ -34,6 +34,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:layout_toRightOf="@id/iv_movie_poster_thumbnail"
+            android:layout_marginStart="40dp"
+            android:layout_toEndOf="@id/iv_movie_poster_thumbnail"
             android:orientation="vertical">
 
             <TextView
