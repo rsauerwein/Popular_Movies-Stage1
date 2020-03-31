@@ -43,6 +43,9 @@ public class DetailActivity extends AppCompatActivity {
         populateUI();
     }
 
+    /**
+     * Populate the Movie detail information to the UI
+     */
     private void populateUI() {
         mMovieTitleTv.setText(mMovie.getTitle());
         mMovieDescriptionTv.setText(mMovie.getOverview());
@@ -56,6 +59,5 @@ public class DetailActivity extends AppCompatActivity {
         String posterPath = mMovie.getPosterPath();
         Uri posterUri = NetworkUtils.createPosterUri(posterPath);
         Picasso.get().load(posterUri).into(mMovieThumbnail);
-
     }
 }
