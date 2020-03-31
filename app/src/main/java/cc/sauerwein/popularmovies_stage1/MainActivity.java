@@ -7,6 +7,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private MovieAdapter mMovieAdapter;
 
     private ProgressBar mLoadingIndicator;
+    private TextView mErrorMessageTv;
 
     private MenuItem mMostPopular;
     private MenuItem mTopRated;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         mRecyclerView = findViewById(R.id.rv_movie_overview);
         mLoadingIndicator = findViewById(R.id.pb_loading_indicator);
+        mErrorMessageTv = findViewById(R.id.tv_error_message);
 
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         mMovieAdapter = new MovieAdapter();
@@ -82,6 +85,16 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    private void showMovies() {
+        mErrorMessageTv.setVisibility(View.INVISIBLE);
+        mRecyclerView.setVisibility(View.VISIBLE);
+    }
+
+    private void showErrorMessage() {
+        mRecyclerView.setVisibility(View.INVISIBLE);
+        mErrorMessageTv.setVisibility(View.VISIBLE);
+    }
+
     private class FetchMovieTask extends AsyncTask<String, Void, Movie[]> {
 
         @Override
@@ -107,7 +120,12 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Movie[] movies) {
             mLoadingIndicator.setVisibility(View.INVISIBLE);
-            mMovieAdapter.setMovieData(movies);
+            if (movies != null) {
+                showMovies();
+                mMovieAdapter.setMovieData(movies);
+            } else {
+                showErrorMessage();
+            }
         }
     }
 }
