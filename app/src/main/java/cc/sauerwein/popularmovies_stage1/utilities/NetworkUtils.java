@@ -16,18 +16,25 @@ public class NetworkUtils {
     private static final String API_BASE_URL = "https://api.themoviedb.org/3";
     private static final String IMAGE_BASE_URL = "https://image.tmdb.org/t/p/";
 
-    private static final String POPULAR_MOVIES_PATH = "movie/popular";
+    public static final String PATH_POPULAR_MOVIES = "movie/popular";
+    public static final String PATH_TOP_RATED_MOVIES_MOVIES = "movie/top_rated";
 
     private static final String API_KEY_PARAM = "api_key";
 
     private static final String DEFAULT_IMAGE_SIZE = "w185";
 
 
-    // For now this function builds a URL which leads to a popular movies API request
-    // TODO Make buildUrl more flexible (f.e. it should also be able to create queries for top rated movies
-    public static URL buildUrl() {
+    /**
+     * Builds a API request URL
+     * Format API_BASE_URL + apiPath + API_KEY
+     * Hint: Commonly used apiPaths are stored as public constants within this class
+     *
+     * @param apiPath
+     * @return For example: https://api.themoviedb.org/3/movie/top_rated?api_key=xxxx
+     */
+    public static URL buildUrl(String apiPath) {
         Uri builtUri = Uri.parse(API_BASE_URL).buildUpon()
-                .appendEncodedPath(POPULAR_MOVIES_PATH)
+                .appendEncodedPath(apiPath)
                 .appendQueryParameter(API_KEY_PARAM, ApiKey.API_KEY)
                 .build();
 

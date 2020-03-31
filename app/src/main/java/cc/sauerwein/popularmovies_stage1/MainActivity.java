@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected Movie[] doInBackground(String... strings) {
-            URL movieRequestUrl = NetworkUtils.buildUrl();
+            URL movieRequestUrl = NetworkUtils.buildUrl(NetworkUtils.PATH_POPULAR_MOVIES);
 
             try {
                 String jsonResponse = NetworkUtils.getResponseFromHttpUrl(movieRequestUrl);
