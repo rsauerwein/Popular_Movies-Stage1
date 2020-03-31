@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Popular Movies</string>
+    <string name="top_rated">Switch to Top Rated</string>
+    <string name="most_popular">Switch to Most popular</string>
 </resources>
