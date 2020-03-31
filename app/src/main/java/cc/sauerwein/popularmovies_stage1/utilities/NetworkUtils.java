@@ -20,7 +20,7 @@ public class NetworkUtils {
     public static final String OPTION_TOP_RATED_MOVIES_MOVIES = "movie/top_rated";
 
     private static final String API_KEY_PARAM = "api_key";
-    private static final String API_KEY = ApiKey.API_KEY;
+    private static final String API_KEY = ApiKey.API_KEY; //Insert your API key here
 
     private static final String DEFAULT_IMAGE_SIZE = "w185";
 
