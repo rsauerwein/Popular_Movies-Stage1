@@ -59,7 +59,7 @@ public class NetworkUtils {
     public static String getResponseFromHttpUrl(URL url) throws IOException {
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
         urlConnection.setConnectTimeout(5000);
-        urlConnection.setReadTimeout(5000);
+        urlConnection.setReadTimeout(5000); // set the timeout to 5 seconds
         try {
             InputStream in = urlConnection.getInputStream();
 
