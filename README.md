@@ -1,18 +1,21 @@
 # Android Developer Nanodegreee Project #2 - Popular Movies - Stage 1
 
 ## Project Overview
-In this project I will create an app which shows information about popular movies.
+In this project I created an app which shows information about popular movies or top rated movies from themoviedb.org.
+It was my second Android Developer project and it's goal was to become more skilled with API requests, UI design, ..
 
-## Build instructions
+## API Setup instructions
+Rename the ApiKey.java.sample (located in the preferences src dir) to ApiKey.java and insert your API key
 
 ## App feature overview
-The app is under construction
+- OptionMenu, which allows you to switch between two overviews:
+  - Popular Movies
+  - Top Rated Movies
+- Provide you more insights on the movie, like release year, description, ...
 
-## Project TODO's
-- Implement the Movie DB API
-- Build a clean and compelling UI
-
-## Personal project Goals
-- Improve my understanding of the foundational elements of programming for Android
-  - Learn more about important core concepts like Layouts, RecyclerView, ViewHolder with clickhandler and Intents
-- Be one step closer to my goal to be a solid Android developer
+## Lessons learned from this project
+- There are so many cool libraries out there, which make life easy
+  - GSON is awesome
+  - Picasso also helps a lot
+- In future I should maybe also work in early stages with branches. Some commits contained way too much different stuff (for example while implementing async API requests)
+- It's a good practice to lint the code
