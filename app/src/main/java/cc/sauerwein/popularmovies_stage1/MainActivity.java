@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(mMovieAdapter);
 
+        setTitle(getString(R.string.popular));
+
         loadMovieData(NetworkUtils.OPTION_POPULAR_MOVIES);
     }
 
@@ -71,12 +73,14 @@ public class MainActivity extends AppCompatActivity {
                 loadMovieData(NetworkUtils.OPTION_TOP_RATED_MOVIES_MOVIES);
                 mTopRated.setVisible(false);
                 mMostPopular.setVisible(true);
+                setTitle(getString(R.string.top_rated));
                 break;
             case R.id.action_most_popular:
                 mMovieAdapter.setMovieData(null);
                 loadMovieData(NetworkUtils.OPTION_POPULAR_MOVIES);
                 mMostPopular.setVisible(false);
                 mTopRated.setVisible(true);
+                setTitle(getString(R.string.popular));
                 break;
             default:
                 return super.onOptionsItemSelected(item);

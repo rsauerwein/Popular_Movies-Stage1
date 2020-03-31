@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Popular Movies</string>
-    <string name="top_rated">Switch to Top Rated</string>
-    <string name="most_popular">Switch to Most popular</string>
+    <string name="top_rated_menu">Switch to Top Rated</string>
+    <string name="most_popular_menu">Switch to Most popular</string>
     <string name="error">Unable to load Movie data. Please check your network connection and try again by pressing the Switch To button.</string>
+    <string name="popular">Popular</string>
+    <string name="top_rated">Top Rated</string>
 </resources>
