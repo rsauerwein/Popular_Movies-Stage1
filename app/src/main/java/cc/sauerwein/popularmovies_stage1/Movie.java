@@ -5,6 +5,10 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 
 
+/**
+ * Stores all relevant movie metadata
+ * As we create Movie objects with gson, we don't need a constructor
+ */
 public class Movie {
     private int id;
     private String title;

@@ -8,7 +8,14 @@ import org.json.JSONObject;
 import cc.sauerwein.popularmovies_stage1.Movie;
 
 public class JsonUtils {
-    // Takes as input the http response from https://api.themoviedb.org/3/movie/popular
+    /**
+     * Converts the API response from TheMovieDB (for example from https://api.themoviedb.org/3/movie/popular)
+     * into Movie objects
+     *
+     * @param apiResponse response from TheMovieDB API with movie search results
+     * @return Array with movies
+     */
+    // Takes as input the http response from
     public static Movie[] jsonToMovie(String apiResponse) {
         Movie[] movies = null;
         try {
