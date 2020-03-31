@@ -1,5 +1,6 @@
 package cc.sauerwein.popularmovies_stage1;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,7 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -105,8 +105,8 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
 
     @Override
     public void onClick(Movie movie) {
-        Toast toast = Toast.makeText(this, movie.getTitle(), Toast.LENGTH_SHORT);
-        toast.show();
+        Intent intent = new Intent(this, DetailActivity.class);
+        startActivity(intent);
     }
 
     private class FetchMovieTask extends AsyncTask<String, Void, Movie[]> {
