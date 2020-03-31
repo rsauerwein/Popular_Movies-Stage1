@@ -29,8 +29,8 @@ public class NetworkUtils {
      * Format API_BASE_URL + apiPath + API_KEY
      * Hint: Commonly used apiPaths are stored as public constants within this class
      *
-     * @param apiPath
-     * @return For example: https://api.themoviedb.org/3/movie/top_rated?api_key=xxxx
+     * @param apiPath example: movie/top_rated
+     * @return example: https://api.themoviedb.org/3/movie/top_rated?api_key=xxxx
      */
     public static URL buildUrl(String apiPath) {
         Uri builtUri = Uri.parse(API_BASE_URL).buildUpon()
