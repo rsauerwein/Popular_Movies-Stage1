@@ -33,4 +33,8 @@ public class Movie {
     public String getPosterPath() {
         return posterPath;
     }
+
+    public String getUserRating() {
+        return userRating;
+    }
 }
