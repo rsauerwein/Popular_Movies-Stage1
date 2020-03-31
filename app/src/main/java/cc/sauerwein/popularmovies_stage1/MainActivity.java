@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +21,7 @@ import java.net.URL;
 import cc.sauerwein.popularmovies_stage1.utilities.JsonUtils;
 import cc.sauerwein.popularmovies_stage1.utilities.NetworkUtils;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MovieAdapter.MovieAdapterOnClickHandler {
 
     private RecyclerView mRecyclerView;
     private MovieAdapter mMovieAdapter;
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         mErrorMessageTv = findViewById(R.id.tv_error_message);
 
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
-        mMovieAdapter = new MovieAdapter();
+        mMovieAdapter = new MovieAdapter(this);
 
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setHasFixedSize(true);
@@ -99,6 +100,12 @@ public class MainActivity extends AppCompatActivity {
     private void showErrorMessage() {
         mRecyclerView.setVisibility(View.INVISIBLE);
         mErrorMessageTv.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onClick(Movie movie) {
+        Toast toast = Toast.makeText(this, movie.getTitle(), Toast.LENGTH_SHORT);
+        toast.show();
     }
 
     private class FetchMovieTask extends AsyncTask<String, Void, Movie[]> {
