@@ -11,6 +11,8 @@ public class Movie {
     private String releaseDate;
     @SerializedName("poster_path")
     private String posterPath;
+    @SerializedName("vote_average")
+    private String userRating;
 
     public int getId() {
         return id;
