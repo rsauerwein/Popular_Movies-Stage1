@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private MovieAdapter mMovieAdapter;
 
+    private ProgressBar mLoadingIndicator;
+
     private MenuItem mMostPopular;
     private MenuItem mTopRated;
 
@@ -31,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mRecyclerView = findViewById(R.id.rv_movie_overview);
+        mLoadingIndicator = findViewById(R.id.pb_loading_indicator);
 
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         mMovieAdapter = new MovieAdapter();
@@ -80,6 +85,12 @@ public class MainActivity extends AppCompatActivity {
     private class FetchMovieTask extends AsyncTask<String, Void, Movie[]> {
 
         @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            mLoadingIndicator.setVisibility(View.VISIBLE);
+        }
+
+        @Override
         protected Movie[] doInBackground(String... strings) {
             URL movieRequestUrl = NetworkUtils.buildUrl(strings[0]);
 
@@ -95,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Movie[] movies) {
+            mLoadingIndicator.setVisibility(View.INVISIBLE);
             mMovieAdapter.setMovieData(movies);
         }
     }
