@@ -68,16 +68,17 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        mMovieAdapter.setMovieData(null);
+
         switch (item.getItemId()) {
             case R.id.action_top_rated:
-                mMovieAdapter.setMovieData(null);
                 loadMovieData(NetworkUtils.OPTION_TOP_RATED_MOVIES_MOVIES);
                 mTopRated.setVisible(false);
                 mMostPopular.setVisible(true);
                 setTitle(getString(R.string.top_rated));
                 break;
             case R.id.action_most_popular:
-                mMovieAdapter.setMovieData(null);
                 loadMovieData(NetworkUtils.OPTION_POPULAR_MOVIES);
                 mMostPopular.setVisible(false);
                 mTopRated.setVisible(true);
