@@ -41,6 +41,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
         String posterPath = mMovieData[position].getPosterPath();
         Uri posterUri = NetworkUtils.createPosterUri(posterPath);
         Picasso.get().load(posterUri).into(holder.mMoviePosterImageView);
+        holder.mMoviePosterImageView.setContentDescription(mMovieData[position].getTitle());
     }
 
     @Override

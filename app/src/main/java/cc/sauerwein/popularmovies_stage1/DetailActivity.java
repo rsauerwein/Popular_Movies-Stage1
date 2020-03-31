@@ -59,5 +59,6 @@ public class DetailActivity extends AppCompatActivity {
         String posterPath = mMovie.getPosterPath();
         Uri posterUri = NetworkUtils.createPosterUri(posterPath);
         Picasso.get().load(posterUri).into(mMovieThumbnail);
+        mMovieThumbnail.setContentDescription(mMovie.getTitle());
     }
 }
