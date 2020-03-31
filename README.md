@@ -24,6 +24,7 @@ Rename the ApiKey.java.sample (located in the preferences src dir) to ApiKey.jav
 - https://stackoverflow.com/questions/1560788/how-to-check-internet-access-on-android-inetaddress-never-times-out
 - https://www.baeldung.com/gson-deserialization-guide
 - https://square.github.io/picasso/
+- https://square.github.io/retrofit/
 - https://developers.themoviedb.org/3/getting-started/introduction
 - https://developer.android.com/reference
 - I adopted a lot from previous Udacity projects (Recyclerview, Async tasks, Networkutils)
