@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        mMovieAdapter.setMovieData(null);
+        mMovieAdapter.resetMovieData();
 
         switch (item.getItemId()) {
             case R.id.action_top_rated:

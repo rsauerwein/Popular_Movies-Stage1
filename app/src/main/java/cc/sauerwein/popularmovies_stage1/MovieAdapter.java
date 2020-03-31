@@ -50,6 +50,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
         return mMovieData.length;
     }
 
+    public void resetMovieData() {
+        mMovieData = null;
+    }
+
     public void setMovieData(Movie[] movieData) throws IllegalArgumentException {
         if (movieData != null) {
             this.mMovieData = movieData;
