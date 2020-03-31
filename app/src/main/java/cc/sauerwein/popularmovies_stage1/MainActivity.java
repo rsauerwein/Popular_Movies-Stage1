@@ -39,20 +39,6 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(mMovieAdapter);
 
-
-//        // Testdata //
-//        Uri uri = Uri.parse("https://image.tmdb.org/t/p/w185//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg");
-//
-//        Movie fakeMovies[] = new Movie[2];
-//        Movie fakemovie = new Movie(1, uri);
-//        ;
-//        Movie fakemovie1 = new Movie(2, uri);
-//        ;
-//        fakeMovies[0] = fakemovie;
-//        fakeMovies[1] = fakemovie1;
-//        mMovieAdapter.setMovieData(fakeMovies);
-//        // endTestdata //
-
         loadMovieData(NetworkUtils.OPTION_POPULAR_MOVIES);
     }
 
