@@ -54,7 +54,7 @@ public class DetailActivity extends AppCompatActivity {
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(mMovie.getReleaseDate());
-        mReleaseDate.setText(Integer.toString(calendar.get(Calendar.YEAR)));
+        mReleaseDate.setText(String.format("%1d", calendar.get(Calendar.YEAR)));
 
         String posterPath = mMovie.getPosterPath();
         Uri posterUri = NetworkUtils.createPosterUri(posterPath);
