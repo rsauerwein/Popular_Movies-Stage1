@@ -50,9 +50,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
         return mMovieData.length;
     }
 
-    public void setMovieData(Movie[] movieData) {
-        this.mMovieData = movieData;
-        notifyDataSetChanged();
+    public void setMovieData(Movie[] movieData) throws IllegalArgumentException {
+        if (movieData != null) {
+            this.mMovieData = movieData;
+            notifyDataSetChanged();
+        } else {
+            throw new IllegalArgumentException("movieData must contain movies");
+        }
     }
 
     public class MovieAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
