@@ -126,8 +126,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
 
             try {
                 String jsonResponse = NetworkUtils.getResponseFromHttpUrl(movieRequestUrl);
-                Movie[] movies = JsonUtils.jsonToMovie(jsonResponse);
-                return movies;
+                return JsonUtils.jsonToMovie(jsonResponse);
             } catch (IOException e) {
                 e.printStackTrace();
                 return null;

@@ -82,11 +82,10 @@ public class NetworkUtils {
      * @return URI to the movie poster - for example http://image.tmdb.org/t/p/w185//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg
      */
     public static Uri createPosterUri(String posterPath) {
-        Uri uri = Uri.parse(IMAGE_BASE_URL).buildUpon()
+
+        return Uri.parse(IMAGE_BASE_URL).buildUpon()
                 .appendPath(DEFAULT_IMAGE_SIZE)
                 .appendEncodedPath(posterPath)
                 .build();
-
-        return uri;
     }
 }
