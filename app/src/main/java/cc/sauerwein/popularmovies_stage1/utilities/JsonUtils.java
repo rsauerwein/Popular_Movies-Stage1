@@ -9,6 +9,8 @@ import cc.sauerwein.popularmovies_stage1.Movie;
 
 public class JsonUtils {
     /**
+     * Not used anymore within this project
+     *
      * Converts the API response from TheMovieDB (for example from https://api.themoviedb.org/3/movie/popular)
      * into Movie objects
      *
