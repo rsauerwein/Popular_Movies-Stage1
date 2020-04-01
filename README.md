@@ -16,6 +16,7 @@ Rename the ApiKey.java.sample (located in the preferences src dir) to ApiKey.jav
 ## Lessons learned from this project
 - There are so many cool libraries out there, which make life easy
   - GSON is awesome
+  - Retrofit <3
   - Picasso also helps a lot
 - In future I should maybe also work in early stages with branches. Some commits contained way too much different stuff (for example while implementing async API requests)
 - It's a good practice to lint the code
