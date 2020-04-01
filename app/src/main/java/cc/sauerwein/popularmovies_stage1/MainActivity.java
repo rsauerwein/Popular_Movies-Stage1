@@ -24,6 +24,8 @@ import cc.sauerwein.popularmovies_stage1.utilities.InternetCheck;
 import cc.sauerwein.popularmovies_stage1.utilities.JsonUtils;
 import cc.sauerwein.popularmovies_stage1.utilities.NetworkUtils;
 
+import static cc.sauerwein.popularmovies_stage1.utilities.NetworkUtils.getPopularMoviesFromApi;
+
 public class MainActivity extends AppCompatActivity implements MovieAdapter.MovieAdapterOnClickHandler {
 
     private RecyclerView mRecyclerView;
@@ -52,8 +54,8 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         mRecyclerView.setAdapter(mMovieAdapter);
 
         setTitle(getString(R.string.popular));
-
-        loadMovieData(NetworkUtils.OPTION_POPULAR_MOVIES);
+        getPopularMoviesFromApi();
+        //loadMovieData(NetworkUtils.OPTION_POPULAR_MOVIES);
     }
 
     private void loadMovieData(final String option) {
