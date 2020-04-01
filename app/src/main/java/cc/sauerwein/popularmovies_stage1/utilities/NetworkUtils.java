@@ -9,19 +9,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 
-import cc.sauerwein.popularmovies_stage1.JsonResponse;
 import cc.sauerwein.popularmovies_stage1.preferences.ApiKey;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.GET;
-import retrofit2.http.Query;
 
 public class NetworkUtils {
 
-    private static final String API_BASE_URL = "https://api.themoviedb.org/3/";
+    public static final String API_BASE_URL = "https://api.themoviedb.org/3/";
     private static final String IMAGE_BASE_URL = "https://image.tmdb.org/t/p/";
 
     public static final String OPTION_POPULAR_MOVIES = "movie/popular";
@@ -57,34 +49,7 @@ public class NetworkUtils {
         return url;
     }
 
-    public static void getPopularMoviesFromApi() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(API_BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
 
-        GetDataService service;
-        service = retrofit.create(GetDataService.class);
-
-        Call<JsonResponse> results = service.getPopularMovies(API_KEY);
-        results.enqueue(new Callback<JsonResponse>() {
-
-            @Override
-            public void onResponse(Call<JsonResponse> call, Response<JsonResponse> response) {
-                int i = 0;
-            }
-
-            @Override
-            public void onFailure(Call<JsonResponse> call, Throwable t) {
-                int i = 0;
-            }
-        });
-    }
-
-    public interface GetDataService {
-        @GET("movie/popular")
-        Call<JsonResponse> getPopularMovies(@Query("api_key") String api_key);
-    }
 
     /**
      * This method returns the entire result from the HTTP response.

@@ -11,11 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.List;
+
 import cc.sauerwein.popularmovies_stage1.utilities.NetworkUtils;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapterViewHolder> {
 
-    private Movie[] mMovieData;
+    private List<Movie> mMovieData;
 
     private final MovieAdapterOnClickHandler mClickHandler;
 
@@ -38,23 +40,23 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
 
     @Override
     public void onBindViewHolder(@NonNull MovieAdapterViewHolder holder, int position) {
-        String posterPath = mMovieData[position].getPosterPath();
+        String posterPath = mMovieData.get(position).getPosterPath();
         Uri posterUri = NetworkUtils.createPosterUri(posterPath);
         Picasso.get().load(posterUri).into(holder.mMoviePosterImageView);
-        holder.mMoviePosterImageView.setContentDescription(mMovieData[position].getTitle());
+        holder.mMoviePosterImageView.setContentDescription(mMovieData.get(position).getTitle());
     }
 
     @Override
     public int getItemCount() {
         if (mMovieData == null) return 0;
-        return mMovieData.length;
+        return mMovieData.size();
     }
 
     public void resetMovieData() {
         mMovieData = null;
     }
 
-    public void setMovieData(Movie[] movieData) throws IllegalArgumentException {
+    public void setMovieData(List<Movie> movieData) throws IllegalArgumentException {
         if (movieData != null) {
             this.mMovieData = movieData;
             notifyDataSetChanged();
@@ -74,7 +76,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
 
         @Override
         public void onClick(View v) {
-            mClickHandler.onClick(mMovieData[getAdapterPosition()]);
+            mClickHandler.onClick(mMovieData.get(getAdapterPosition()));
         }
     }
 }
